@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="ticTacToeApp">
+
+<head>
+    <!-- Linking of the stylesheet -->
+    <link rel="stylesheet" href="finalprojtest.css">
+    <title>Tic-Tac-Toe</title>
+    <style>
+        body {
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #E3F2FD;
+        }
+
+        h1 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 60px;
+        }
+
+        button {
+            height: 60px;
+            width: 100px;
+            font-size: 20px;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            border: 2px solid;
+            box-shadow: 0 0 0 4px;
+            line-height: 100px;
+            font-size: 100px;
+            cursor: pointer;
+        }
+
+        #gameContainer {
+            font-family: "Permanent Marker", cursive;
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        #cellContainer {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            width: 310px;
+            margin: auto;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- background music -->
+    <audio src="/audio/Ocean-of-Thought(chosic.com).mp3" autoplay loop>
+    </audio>
+    <!-- Header for the home page -->
+    <nav class="header">
+        <!-- Music control button  -->
+        <a id="nav-items">Mute music</a>
+        <div class="audio-control">
+            <input type="checkbox" id="check" onclick="toggleMute()">
+            <label for="check" class="button"></label>
+            <!-- Navigation buttons  -->
+        </div>
+        <a href="finalprojskeleton.html" class="nav-home" id="nav-items">Home</a>
+        <a href="testing-ang-tic.html" id="nav-items">Tic-Tac-Toe</a>
+        <a href="rock-paper-scissors.html" id="nav-items">Rock-Paper-Scissors</a>
+    </nav>
+    <!-- Game container -->
+    <div id="gameContainer" ng-controller="TicTacToeController as vm">
+        <h1>Tic Tac Toe</h1>
+        <div id="cellContainer">
+            <div ng-repeat="cell in vm.cells track by $index" ng-click="vm.cellClicked($index)" class="cell">{{ cell }}
+            </div>
+        </div>
+        <h1 id="statusText">{{ vm.statusText }}</h1>
+        <button id="restartBtn" ng-click="vm.restartGame()">Restart</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('ticTacToeApp', [])
+            .controller('TicTacToeController', function () {
+                var vm = this;
+                vm.cells = ["", "", "", "", "", "", "", "", ""];
+                vm.currentPlayer = "X";
+                vm.statusText = `${vm.currentPlayer}'s turn`;
+                vm.running = true;
+                vm.winConditions = [
+                    [0, 1, 2],
+                    [3, 4, 5],
+                    [6, 7, 8],
+                    [0, 3, 6],
+                    [1, 4, 7],
+                    [2, 5, 8],
+                    [0, 4, 8],
+                    [2, 4, 6]
+                ];
+
+                // To start the game and show turn of first player
+
+                vm.initializeGame = function () {
+                    vm.statusText = `${vm.currentPlayer}'s turn`;
+                };
+
+                // Will update the cells value to current players value
+
+                vm.cellClicked = function (index) {
+                    if (vm.cells[index] !== "" || !vm.running) {
+                        return;
+                    }
+
+                    vm.cells[index] = vm.currentPlayer;
+                    vm.checkWinner();
+                };
+
+                // Will alternate between both players that is X and O
+
+                vm.changePlayer = function () {
+                    vm.currentPlayer = vm.currentPlayer === "X" ? "O" : "X";
+                    vm.statusText = `${vm.currentPlayer}'s turn`;
+                };
+
+                vm.checkWinner = function () {
+                    // Will tell if game is won or not
+                    var roundWon = false;
+
+                    // Will iterate through all win conditions and pu there values in respective variable
+                    // Then will check wether those values are empty or full
+                    // Then if all values are filled it will check wether all selected cells have same value
+
+                    for (var i = 0; i < vm.winConditions.length; i++) {
+                        var condition = vm.winConditions[i];
+                        var cellA = vm.cells[condition[0]];
+                        var cellB = vm.cells[condition[1]];
+                        var cellC = vm.cells[condition[2]];
+
+                        if (cellA === "" || cellB === "" || cellC === "") {
+                            continue;
+                        }
+                        if (cellA === cellB && cellB === cellC) {
+                            roundWon = true;
+                            break;
+                        }
+                    }
+
+                    // Round won then show winner 
+                    // else if all cells are full and no winner then display draw
+                    // else we will change the player to the next one
+
+                    if (roundWon) {
+                        vm.statusText = `${vm.currentPlayer} wins!`;
+                        vm.running = false;
+                    } else if (!vm.cells.includes("")) {
+                        vm.statusText = `Draw!`;
+                        vm.running = false;
+                    } else {
+                        vm.changePlayer();
+                    }
+                };
+
+                // To restart the game and clear each cell
+
+                vm.restartGame = function () {
+                    vm.currentPlayer = "X";
+                    vm.cells = ["", "", "", "", "", "", "", "", ""];
+                    vm.statusText = `${vm.currentPlayer}'s turn`;
+                    vm.running = true;
+                };
+
+                vm.initializeGame();
+            });
+
+        function toggleMute() {
+            var audios = document.getElementsByTagName('audio');
+            for (var i = 0; i < audios.length; i++) {
+                audios[i].muted = !audios[i].muted;
+            }
+        }
+    </script>
+</body>
+
+</html>

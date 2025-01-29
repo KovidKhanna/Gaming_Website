@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Linking of the stylesheet -->
+  <link rel="stylesheet" href="finalprojtest.css">
+    <title>Rock-Paper-Scissors</title>
+    <style>
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #E3F2FD;
+}
+h1{
+    font-size: 60px;
+    color: hsl(0, 0%, 20%);
+}
+#gameContainer{
+    font-family: "Permanent Marker", cursive;
+            text-align: center;
+            margin-top: 50px;
+}
+.choices{
+    margin-bottom: 30px;
+}
+.choices button{
+    font-size: 7.5rem;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 0 10px;
+    border-radius: 250px;
+    background-color: hsl(200, 100%, 50%);
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+.choices button:hover{
+    background-color: hsl(200, 100%, 70%);
+}
+#playerDisplay, #computerDisplay{
+    font-size: 40px;
+}
+#resultDisplay{
+    font-size: 60px;
+    margin: 30px 0;
+}
+.scoreDisplay{
+    font-size: 40px;
+}
+.greenText, #playerScoreDisplay{
+    color: green;
+}
+.redText, #computerScoreDisplay{
+    color: red;
+}
+</style>
+</head>
+<body>
+     <!-- background music -->
+  <audio src="/audio/Ocean-of-Thought(chosic.com).mp3" autoplay loop>
+</audio>
+        <!-- Header for the home page -->
+        <nav class="header">
+            <!-- Music control button  -->
+              <a id="nav-items">Mute music</a>
+              <div class="audio-control">
+                <input type="checkbox" id="check" onclick="toggleMute()">
+                <label for="check" class="button"></label>
+            <!-- Navigation buttons  -->
+              </div>
+              <a href="finalprojskeleton.html" class="nav-home" id="nav-items">Home</a>
+              <a href="testing-ang-tic.html" id="nav-items">Tic-Tac-Toe</a>
+              <a href="rock-paper-scissors.html" id="nav-items">Rock-Paper-Scissors</a>
+            </nav>
+
+    <div id="gameContainer">
+    <h1>Rock - Paper - Scissors</h1>
+    
+    <div class="choices">
+        <button onclick="playGame('rock')">✊</button>
+        <button onclick="playGame('paper')">🤚</button>
+        <button onclick="playGame('scissors')">✌️</button>
+    </div>
+    <div id="playerDisplay">PLAYER: </div>
+    <div id="computerDisplay">COMPUTER: </div>
+    <div id="resultDisplay"></div>
+
+    <div class="scoreDisplay">Player Score: 
+        <span id="playerScoreDisplay">0</span>
+    </div>
+
+    <div class="scoreDisplay">Computer Score: 
+        <span id="computerScoreDisplay">0</span>
+    </div>
+    </div>
+    <script>
+        const choices = ["rock", "paper", "scissors"];
+const playerDisplay = document.getElementById("playerDisplay");
+const computerDisplay = document.getElementById("computerDisplay");
+const resultDisplay = document.getElementById("resultDisplay");
+const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+const computerScoreDisplay = document.getElementById("computerScoreDisplay");
+let playerScore = 0;
+let computerScore = 0;
+
+function playGame(playerChoice){
+
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+    let result = "";
+
+    if(playerChoice === computerChoice){
+        result = "IT'S A TIE!";
+    }
+    else{
+        switch(playerChoice){
+            case "rock":
+                result = (computerChoice === "scissors") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+            case "paper":
+                result = (computerChoice === "rock") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+            case "scissors":
+                result = (computerChoice === "paper") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+        }
+    }
+
+    playerDisplay.textContent = `PLAYER: ${playerChoice}`;
+    computerDisplay.textContent = `Computer: ${computerChoice}`;
+    resultDisplay.textContent = result;
+
+    resultDisplay.classList.remove("greenText", "redText");
+
+    switch(result){
+        case "YOU WIN!":
+            resultDisplay.classList.add("greenText");
+            playerScore++;
+            playerScoreDisplay.textContent = playerScore;
+            break;
+        case "YOU LOSE!":
+            resultDisplay.classList.add("redText");
+            computerScore++;
+            computerScoreDisplay.textContent = computerScore;
+            break;
+    }
+}
+function toggleMute() {
+    var audios = document.getElementsByTagName('audio');
+    for (var i = 0; i < audios.length; i++) {
+        audios[i].muted = !audios[i].muted;
+    }
+}
+    </script>
+</body>
+</html>

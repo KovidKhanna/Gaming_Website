@@ -1,0 +1,292 @@
+/* To make a division to put elements on the webpage */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 896px;
+  width: 100%;
+  font-weight: bold;
+}
+
+/* To display the games in a single row */
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* To create the boxes to preview game info */
+.box {
+  width: 330px;
+  height: 330px;
+  border: 4px solid black;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 20px;
+  margin-top: 10%;
+  background-color: #eee;
+}
+
+/* To individually customize the image in each box */
+.box-1 {
+  background-image: url(/resources/tic-tac-toe-test.png);
+}
+
+.box-2 {
+  background-image: url(/resources/rps-test.jpg);
+}
+
+.box-3 {
+  background-image: url(/resources/COMING\ SOON!.jpg);
+}
+
+.box-4 {
+  background-image: url(/resources/COMING\ SOON!.jpg);
+}
+
+/* To design the main title of the home page */
+.main-title {
+  font-family: "Righteous", cursive;
+  font-weight: 600;
+  font-size: 1000%;
+  position: absolute;
+  margin-top: 2.5%;
+  margin-left: 22%;
+  letter-spacing: 8px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: whitesmoke;
+  color: #D20062;
+  text-shadow:
+    10px 5px 0px #D6589F,
+    15px 10px 0px #D895DA,
+    20px 15px 0px #C4E4FF;
+}
+
+/* To create the background of the home page */
+.main-bg {
+  animation: scroll 200s linear infinite;
+  background: url("/resources/bg14.jpg");
+  color: beige;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  margin: 0px;
+
+}
+
+/* To create the scroll effect of the background */
+@keyframes scroll {
+  100% {
+    background-position: 0px 600%;
+  }
+}
+
+/* To create the header with the nav items on the home page */
+.header {
+  background-color: #22223b;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+
+}
+
+/* To design the nav items */
+.header a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 19.4px;
+}
+
+/* To create a hover effect on nav items */
+.header a:hover {
+  background-color: #555;
+}
+
+/* To align the nav items on the right of header */
+.nav-home {
+  margin-left: 60%;
+}
+
+/* To add padding between the nav items */
+#nav-items {
+  padding: 10px;
+}
+
+/* To create the mute button on the header */
+.audio-control {
+  margin-left: 20px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* To design the button slide area */
+.button {
+  background-color: #d2d2d2;
+  width: 100px;
+  height: 50px;
+  border-radius: 100px;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.2s;
+}
+
+/* To create the circular part inside the slider */
+.button::before {
+  position: absolute;
+  content: '';
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  margin: 5px;
+  transition: 0.2s;
+}
+
+/* To change the color of the slider once pressed */
+input:checked+.button {
+  background-color: orange;
+}
+
+/* To move the slider once pressed */
+input:checked+.button::before {
+  transform: translateX(50px);
+}
+
+/* To set the width of input box */
+input {
+  max-width: 280px;
+}
+
+/* To hide the check bar on the homepage */
+input[type="checkbox"] {
+  display: none;
+}
+
+/*newsletter form*/
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 20px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 0px;
+  right: 40px;
+  width: 300px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 2px solid lightgray;
+  border-top: 20px solid lightgray;
+  z-index: 10;
+  margin-top: 0px;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 400px;
+  margin-top: -40px;
+  background-color: lightgrey;
+  color: black;
+  text-align: center;
+}
+
+/* Full-width input fields */
+.form-container input[type=text],
+.form-container input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 20px;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus,
+.form-container input[type=email]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+
+/* To change the contents dimensions when screen size is reduced */
+@media screen and (max-width: 768px) {
+  .container {
+    height: 100%;
+  }
+
+  .main-title {
+    font-size: 500%;
+    margin-left: 6%;
+  }
+
+  .box {
+    width: 275px;
+    height: 275px;
+    margin-top: 60%;
+    padding-bottom: 10px;
+  }
+
+  .header {
+    align-items: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .nav-home {
+    margin-left: 20%;
+  }
+
+  .audio-control {
+    margin-left: 0px;
+    padding-left: 20px;
+    padding-right: 10%;
+  }
+
+  .button {
+    margin-left: 10%;
+  }
+
+  #nav-items {
+    padding-right: 5px;
+    font-size: 18px;
+  }
+
+  .row {
+    display: grid;
+  }
+}

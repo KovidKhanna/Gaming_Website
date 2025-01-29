@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Title of the webpage -->
+  <title>GamerHub.io</title>
+  <!-- Linking of the stylesheet and java script for the home page -->
+  <link rel="stylesheet" href="finalprojtest.css">
+</head>
+
+<body class="main-bg">
+  <!-- background music -->
+  <audio src="/resources/Ocean-of-Thought(chosic.com).mp3" autoplay loop>
+  </audio>
+  <!-- Header for the home page -->
+  <nav class="header">
+  <!-- Music control button  -->
+    <a id="nav-items">Mute music</a>
+    <div class="audio-control">
+      <input type="checkbox" id="check" onclick="toggleMute()">
+      <label for="check" class="button"></label>
+  <!-- Navigation buttons  -->
+    </div>
+    <a href="finalprojskeleton.html" class="nav-home" id="nav-items">Home</a>
+    <a href="testing-ang-tic.html" id="nav-items">Tic-Tac-Toe</a>
+    <a href="rock-paper-scissors.html" id="nav-items">Rock-Paper-Scissors</a>
+  </nav>
+  <!-- Main title of the home page -->
+  <div class="main-title">GamerHub.io</div>
+  <!-- Displaying all games available -->
+  <div class="container">
+    <div class="row">
+      <a href="testing-ang-tic.html" class="box box-1"></a>
+      <a href="rock-paper-scissors.html" class="box box-2"></a>
+      <a href="#" class="box box-3"></a>
+      <a href="#" class="box box-4"></a>
+    </div>
+  </div>
+
+<!-- Button for the form -->
+<button class="open-button" onclick="openForm()">Subscribe to get updates!</button>
+
+<!-- The form -->
+<div class="form-popup" id="myForm">
+  <form class="form-container" id="sampleForm">
+    <h1>Subscribing to newsletter!</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email">
+
+    <label for="username"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="username">
+
+    <button type="submit" class="btn" onclick="closeForm()">Submit</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+
+  <script src="finalprojscript.js"></script>
+
+</body>
+
+</html>
