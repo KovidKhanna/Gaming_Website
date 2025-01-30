@@ -13,5 +13,8 @@ This project displayes the web development skills I have learned while taking th
 
 ## Screenshots
 
-![App Screenshot]()
+(![Home Page](https://github.com/user-attachments/assets/617093ad-da39-4c1e-934d-92cd0768818d)
+)
+![Tic Tac Toe](https://github.com/user-attachments/assets/18b0606c-b041-47df-9c76-52ed974eadb6)
+![Rock Paper Scissors](https://github.com/user-attachments/assets/cc3c6f9c-73fd-44ed-8c03-1006294dfe10)
 
