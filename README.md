@@ -18,6 +18,6 @@ Tic-Tac-Toe
 ![Tic Tac Toe](https://github.com/user-attachments/assets/18b0606c-b041-47df-9c76-52ed974eadb6)
 Rock Paper Scissors
 ![Rock Paper Scissors](https://github.com/user-attachments/assets/cc3c6f9c-73fd-44ed-8c03-1006294dfe10)
-Newsletter 
+Newsletter :
 This uses MongoDB to store the data of users locally on the device & NodeJS is being used to establish the connection between the website & local device.
 ![Newletter](https://github.com/user-attachments/assets/010544f5-03d1-4fbb-a83e-0fcd16189aba)
